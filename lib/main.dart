@@ -1,6 +1,7 @@
+import 'package:custom_reminders/CustomReminderAddNew.dart';
 import 'package:flutter/material.dart';
 
-import 'CustomReminders.dart';
+import 'CustomReminderView.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,12 +38,14 @@ class HomePage extends StatelessWidget {
             ],
             onSelected: (value) {
               if (value == 1) {
-
+                showDialog(context: context, builder: (context) {
+                  return CustomReminderAddNew();
+                });
               }
               if (value == 2) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CustomReminders()),
+                  MaterialPageRoute(builder: (context) => CustomReminderView()),
                 );
               }
             },

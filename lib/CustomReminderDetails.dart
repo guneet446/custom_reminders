@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+
 class CustomReminderDetails {
   String description;
-  DateTime reminderDateTime;
+  DateTime reminderDate;
+  TimeOfDay reminderTime;
   bool alarmRequired;
 
-  CustomReminderDetails(this.description, this.reminderDateTime, this.alarmRequired);
+  CustomReminderDetails(this.description, this.reminderDate, this.reminderTime, this.alarmRequired);
 }

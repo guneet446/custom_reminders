@@ -10,7 +10,13 @@ class CustomReminderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.fromLTRB(36, 16, 36, 0),
-      child: Text(customReminder.description),
+      child: Column(
+          children: <Widget>[
+            Text(customReminder.description),
+            Text(customReminder.reminderDate.toString()),
+            Text(customReminder.reminderTime.toString()),
+          ],
+      ),
     );
   }
 }

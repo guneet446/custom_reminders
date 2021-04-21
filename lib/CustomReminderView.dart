@@ -3,13 +3,13 @@ import 'package:custom_reminders/CustomReminderDetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomReminders extends StatefulWidget {
+class CustomReminderView extends StatefulWidget {
   @override
-  _CustomRemindersState createState() => _CustomRemindersState();
+  _CustomReminderViewState createState() => _CustomReminderViewState();
 }
-List<CustomReminderDetails> customReminders = [CustomReminderDetails('descrip', DateTime.now(), false)];
+List<CustomReminderDetails> customReminders = [CustomReminderDetails('description', DateTime.now(), TimeOfDay.now(), false)];
 
-class _CustomRemindersState extends State<CustomReminders> {
+class _CustomReminderViewState extends State<CustomReminderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
