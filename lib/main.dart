@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:custom_reminders/CustomReminders.dart';
+
+import 'CustomReminders.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,14 +23,29 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
         actions: [
-          TextButton(
-              onPressed:() {
+          PopupMenuButton(
+            child: Icon(Icons.add, color: Colors.white,),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 1,
+                child: Text("New Reminder"),
+              ),
+              PopupMenuItem(
+                value: 2,
+                child: Text("View Reminders"),
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 1) {
+
+              }
+              if (value == 2) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => CustomReminders()),
                 );
-              },
-              child: Icon(Icons.add, color: Colors.white,),
+              }
+            },
           ),
           TextButton(
               onPressed:() {
