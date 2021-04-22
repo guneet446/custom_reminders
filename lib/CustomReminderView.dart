@@ -7,7 +7,7 @@ class CustomReminderView extends StatefulWidget {
   @override
   _CustomReminderViewState createState() => _CustomReminderViewState();
 }
-List<CustomReminderDetails> customReminders = [CustomReminderDetails('description', DateTime.now(), TimeOfDay.now(), false)];
+List<CustomReminderDetails> customReminders = [];
 
 class _CustomReminderViewState extends State<CustomReminderView> {
   @override

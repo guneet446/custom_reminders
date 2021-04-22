@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  date_time_picker: ^2.0.0
+  flutter_local_notifications: ^5.0.0+1
   flutter:
     sdk: flutter
 

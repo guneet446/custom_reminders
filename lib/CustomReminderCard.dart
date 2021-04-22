@@ -15,6 +15,7 @@ class CustomReminderCard extends StatelessWidget {
             Text(customReminder.description),
             Text(customReminder.reminderDate.toString()),
             Text(customReminder.reminderTime.toString()),
+            Text(customReminder.alarmRequired.toString()),
           ],
       ),
     );

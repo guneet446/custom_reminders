@@ -1,5 +1,4 @@
 import 'package:custom_reminders/CustomReminderView.dart';
-import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'CustomReminderDetails.dart';
@@ -15,6 +14,7 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
   DateTime selectedDate;
   TimeOfDay selectedTime;
   String userDescription = "";
+  bool getNotif = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +30,22 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
         },
       ),
       actions: <Widget>[
+        SwitchListTile(
+          title: Text("Get Notified"),
+            value: getNotif,
+            onChanged: (newValue) {
+              setState(() {
+                getNotif = newValue;
+              });
+            },
+        ),
         TextButton(
           child: Text('Next'),
           onPressed: () async {
             userDescription = myController.text;
             selectedDate = await _selectDate(context);
             selectedTime = await _selectTime(context);
-            customReminders.add(CustomReminderDetails(userDescription, selectedDate, selectedTime, false));
+            customReminders.add(CustomReminderDetails(userDescription, selectedDate, selectedTime, getNotif));
             Navigator.of(context).pop();
           },
         ),
@@ -69,4 +78,32 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
     );
     return pickedTime;
   }
+
+  /*void scheduleNotif() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+    AndroidNotificationDetails(
+        'your channel id', 'your channel name', 'your channel description',
+        importance: Importance.max,
+        priority: Priority.high,
+        showWhen: false);
+    const NotificationDetails platformChannelSpecifics =
+    NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+        0, 'plain title', 'plain body', platformChannelSpecifics,
+        payload: 'item x');
+  }*/
+  
+  /*Future<void> _showNotification() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+    AndroidNotificationDetails(
+        'your channel id', 'your channel name', 'your channel description',
+        importance: Importance.max,
+        priority: Priority.high,
+        ticker: 'ticker');
+    const NotificationDetails platformChannelSpecifics =
+    NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+        0, 'plain title', 'plain body', platformChannelSpecifics,
+        payload: 'item x');
+  }*/
 }
