@@ -13,6 +13,7 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
   final myController = TextEditingController();
   DateTime selectedDate;
   TimeOfDay selectedTime;
+  DateTime selectedDateTime;
   String userDescription = "";
   bool getNotif = true;
 
@@ -45,7 +46,8 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
             userDescription = myController.text;
             selectedDate = await _selectDate(context);
             selectedTime = await _selectTime(context);
-            customReminders.add(CustomReminderDetails(userDescription, selectedDate, selectedTime, getNotif));
+            selectedDateTime = new DateTime(selectedDate.year, selectedDate.month, selectedDate.day, selectedTime.hour, selectedTime.minute);
+            customReminders.add(CustomReminderDetails(userDescription, selectedDateTime, getNotif));
             Navigator.of(context).pop();
           },
         ),
@@ -78,4 +80,6 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
     );
     return pickedTime;
   }
+
+  //DatePickerMode
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'CustomReminderDetails.dart';
 
 class CustomReminderCard extends StatelessWidget {
@@ -13,8 +14,7 @@ class CustomReminderCard extends StatelessWidget {
       child: Column(
           children: <Widget>[
             Text(customReminder.description),
-            Text(customReminder.reminderDate.toString()),
-            Text(customReminder.reminderTime.toString()),
+            Text(DateFormat('dd-MM-yyyy – HH:mm').format(customReminder.reminderDateTime)),
             Text(customReminder.alarmRequired.toString()),
           ],
       ),
