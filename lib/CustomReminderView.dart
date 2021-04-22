@@ -19,9 +19,18 @@ class _CustomReminderViewState extends State<CustomReminderView> {
       body: ListView.builder(
         itemCount: customReminders.length,
         itemBuilder: (context, index) {
-          return CustomReminderCard(
+          if(customReminders[index].reminderDateTime.isBefore(DateTime.now())) {
+            customReminders.removeAt(index);
+            return null;
+          }
+          else {
+            return CustomReminderCard(
+              customReminder: customReminders[index],
+            );
+          }
+          /*return CustomReminderCard(
             customReminder: customReminders[index],
-          );
+          );*/
         },
       ),
     );

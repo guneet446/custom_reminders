@@ -71,6 +71,7 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
         context: context,
         helpText: "Time of Reminder",
         initialTime: TimeOfDay.now(),
+        initialEntryMode: TimePickerEntryMode.dial,
         builder: (BuildContext context, Widget child) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
@@ -80,6 +81,4 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
     );
     return pickedTime;
   }
-
-  //DatePickerMode
 }
