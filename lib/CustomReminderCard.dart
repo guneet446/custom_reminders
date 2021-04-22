@@ -19,10 +19,32 @@ class CustomReminderCard extends StatelessWidget {
             Text(customReminder.alarmRequired.toString()),
             IconButton(
                 onPressed: () {
-                  customReminders.remove(customReminder);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => CustomReminderView()),
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return new AlertDialog(
+                        title: Text('Delete Reminder (${customReminder.description})'),
+
+                        actions: <Widget>[
+                          new TextButton(
+                              child: new Text('Cancel'),
+                              onPressed: () => Navigator.of(context).pop()
+                          ),
+                          new TextButton(
+                              child: new Text('Delete'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                customReminders.remove(customReminder);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>
+                                      CustomReminderView()),
+                                );
+                              },
+                          ),
+                        ],
+                      );
+                    },
                   );
                 },
                 icon: Icon(Icons.delete),
