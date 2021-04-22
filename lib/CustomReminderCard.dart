@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'CustomReminderDetails.dart';
+import 'CustomReminderView.dart';
 
 class CustomReminderCard extends StatelessWidget {
   final CustomReminderDetails customReminder;
@@ -16,6 +17,16 @@ class CustomReminderCard extends StatelessWidget {
             Text(customReminder.description),
             Text(DateFormat('dd-MM-yyyy – HH:mm').format(customReminder.reminderDateTime)),
             Text(customReminder.alarmRequired.toString()),
+            IconButton(
+                onPressed: () {
+                  customReminders.remove(customReminder);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => CustomReminderView()),
+                  );
+                },
+                icon: Icon(Icons.delete),
+            ),
           ],
       ),
     );
