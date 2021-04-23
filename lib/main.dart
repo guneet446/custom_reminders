@@ -1,6 +1,5 @@
 import 'package:custom_reminders/CustomReminderAddNew.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'CustomReminderView.dart';
 
 Future<void> main() async {
