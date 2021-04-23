@@ -35,7 +35,16 @@ class Notifications {
         }
     );
   }
+
+  Future<void> showNotification() async{
+    var androidChannelSpecifics = AndroidNotificationDetails('CHANNEL_ID', 'CHANNEL_NAME', 'CHANNEL_DESCRIPTION');
+    var iosChannelSpecifics = IOSNotificationDetails();
+    var platformChannelSpecifics = NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
+    flutterLocalNotificationsPlugin.show(0, "test", "test body", platformChannelSpecifics, payload: "Test payload");
+  }
 }
+
+Notifications notifications = Notifications(); //Note: object so we can access the functions everywhere
 
 class ReceivedNotification {
   int id;

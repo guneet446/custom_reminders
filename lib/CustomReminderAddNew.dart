@@ -2,6 +2,7 @@ import 'package:custom_reminders/CustomReminderView.dart';
 import 'package:flutter/material.dart';
 
 import 'CustomReminderDetails.dart';
+import 'Notifications.dart';
 
 class CustomReminderAddNew extends StatefulWidget {
   @override
@@ -48,6 +49,9 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
             selectedTime = await _selectTime(context);
             selectedDateTime = new DateTime(selectedDate.year, selectedDate.month, selectedDate.day, selectedTime.hour, selectedTime.minute);
             customReminders.add(CustomReminderDetails(userDescription, selectedDateTime, getNotif));
+            if(getNotif) {
+              await notifications.showNotification();
+            }
             Navigator.of(context).pop();
           },
         ),
