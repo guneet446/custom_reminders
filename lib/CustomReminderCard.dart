@@ -15,8 +15,8 @@ class CustomReminderCard extends StatelessWidget {
       child: Column(
           children: <Widget>[
             Text(customReminder.description),
-            Text(DateFormat('dd-MM-yyyy – HH:mm').format(customReminder.reminderDateTime)),
-            Text(customReminder.alarmRequired.toString()),
+            Text('Date and Time: ${DateFormat('dd-MM-yyyy – HH:mm').format(customReminder.reminderDateTime)}'),
+            Text('Get Notification: ${customReminder.alarmRequired.toString()}'),
             IconButton(
                 onPressed: () {
                   showDialog(

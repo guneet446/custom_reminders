@@ -28,9 +28,6 @@ class _CustomReminderViewState extends State<CustomReminderView> {
               customReminder: customReminders[index],
             );
           }
-          /*return CustomReminderCard(
-            customReminder: customReminders[index],
-          );*/
         },
       ),
     );

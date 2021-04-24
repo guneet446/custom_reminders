@@ -17,6 +17,12 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
   DateTime selectedDateTime;
   String userDescription = "";
   bool getNotif = true;
+  int uid = 0;
+
+  void initState() {
+    super.initState();
+    notifications.setOnNotificationClick(onNotificationClick);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,9 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
             selectedDateTime = new DateTime(selectedDate.year, selectedDate.month, selectedDate.day, selectedTime.hour, selectedTime.minute);
             customReminders.add(CustomReminderDetails(userDescription, selectedDateTime, getNotif));
             if(getNotif) {
-              await notifications.showNotification();
+              //await notifications.showNotification(); //can be used for testing
+              await notifications.scheduleNotification(uid, selectedDateTime, userDescription);
+              ++ uid;
             }
             Navigator.of(context).pop();
           },
@@ -84,5 +92,9 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
         }
     );
     return pickedTime;
+  }
+
+  onNotificationClick(String payload) {
+    print('Payload $payload');
   }
 }
