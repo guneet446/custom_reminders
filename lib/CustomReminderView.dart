@@ -22,8 +22,9 @@ class _CustomReminderViewState extends State<CustomReminderView> {
       body: ListView.builder(
         itemCount: customReminders.length,
         itemBuilder: (context, index) {
+          //(DateTime.now().add(Duration(days: 2)).isBefore(customReminders[index].reminderDateTime))
           //(customReminders[index].reminderDateTime.isBefore(DateTime.now().add(const Duration(days: 2))))
-          if (DateTime.now().add(Duration(days: 2)).isBefore(customReminders[index].reminderDateTime)){
+          if (customReminders[index].reminderDateTime.add(const Duration(days: 2)).isBefore(DateTime.now())){
             customReminders.removeAt(index);
             return null;
           }
