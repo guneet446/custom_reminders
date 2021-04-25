@@ -73,7 +73,7 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2020),
       lastDate: DateTime(2025),
-      initialEntryMode: DatePickerEntryMode.input,
+      initialEntryMode: DatePickerEntryMode.calendar,
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData.light().copyWith(
