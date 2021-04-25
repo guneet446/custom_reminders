@@ -27,7 +27,7 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Description"),
+      title: Text("Set Reminder"),
       content: TextFormField(
         controller: myController,
         decoration: InputDecoration(
@@ -48,7 +48,7 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
             },
         ),
         TextButton(
-          child: Text('Next'),
+          child: Text('Next', style: TextStyle(color: Color(0xff235790)),),
           onPressed: () async {
             userDescription = myController.text;
             selectedDate = await _selectDate(context);
@@ -74,6 +74,19 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2025),
       initialEntryMode: DatePickerEntryMode.input,
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Color(0xff588297),
+            accentColor: Color(0xffE28F22),
+            colorScheme: ColorScheme.light(primary: Color(0xff235790),),
+            buttonTheme: ButtonThemeData(
+                textTheme: ButtonTextTheme.primary
+            ),
+          ),
+          child: child,
+        );
+      },
     );
     return pickedDate;
   }
@@ -85,8 +98,19 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
         initialTime: TimeOfDay.now(),
         initialEntryMode: TimePickerEntryMode.dial,
         builder: (BuildContext context, Widget child) {
-          return MediaQuery(
+          /*return MediaQuery(
             data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+            child: child,
+          );*/
+          return Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: Color(0xff588297),
+              accentColor: Color(0xffE28F22),
+              colorScheme: ColorScheme.light(primary: Color(0xff235790),),
+              buttonTheme: ButtonThemeData(
+                  textTheme: ButtonTextTheme.primary
+              ),
+            ),
             child: child,
           );
         }
