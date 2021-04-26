@@ -38,14 +38,17 @@ class _CustomReminderAddNewState extends State<CustomReminderAddNew> {
         },
       ),
       actions: <Widget>[
-        SwitchListTile(
-          title: Text("Get Notified"),
-            value: getNotif,
-            onChanged: (newValue) {
-              setState(() {
-                getNotif = newValue;
-              });
-            },
+        SizedBox(
+          width: 300,
+          child: SwitchListTile(
+            title: Text("Get Notified"),
+              value: getNotif,
+              onChanged: (newValue) {
+                setState(() {
+                  getNotif = newValue;
+                });
+              },
+          ),
         ),
         TextButton(
           child: Text('Next', style: TextStyle(color: Color(0xff235790)),),
